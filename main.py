@@ -35,3 +35,17 @@ with open(output_file, 'w') as f:
     json.dump(transforms, f, indent=4)
 
 print(f'transforms.json creado para {image_folder}')
+
+with open(output_file, 'w') as f:
+    json.dump(transforms, f, indent=4)
+
+    # Ask for confirmation before deleting
+    confirmation = input(f"Quieres eliminar todos los archivos .json de {image_folder}? (y/n): ")
+
+    if confirmation.lower() == "y":
+        # Delete all .json files in the folder
+        for file in os.listdir(image_folder):
+            if file.endswith('.json'):
+                file_path = os.path.join(image_folder, file)
+                os.remove(file_path)
+        print("Archivos .json eliminados.")
